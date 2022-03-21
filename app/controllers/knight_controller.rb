@@ -24,7 +24,7 @@ class KnightController < ApplicationController
 
     # check pos and target
     if !is_valid_square(pos) || !is_valid_square(target) then
-      raise ArgumentError.new "Invalid position or target (#{x},#{y}) to (#{tx},#{ty})"
+      raise ArgumentError.new "Invalid position or target (#{pos[0]},#{pos[1]}) to (#{target[0]},#{target[1]})"
     end
 
     # all possible moves relative to current pos
@@ -65,7 +65,7 @@ class KnightController < ApplicationController
         new_pos = queue.shift();
 
         # if that's the target...
-        if isSameSquare(new_pos[0], target) then 
+        if is_same_square(new_pos[0], target) then 
             return new_pos[1]
         end
 
@@ -76,7 +76,7 @@ class KnightController < ApplicationController
             xy = Array[x, y]
 
             # make sure those squares are valid, and not previously visited
-            if isValidSquare(xy) && !visited[x][y] then
+            if is_valid_square(xy) && !visited[x][y] then
                 # mark square as visited
                 visited[x][y] = true;
                 history = new_pos[1] + xy
