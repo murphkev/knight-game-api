@@ -6,6 +6,8 @@ class KnightController < ApplicationController
       y = Integer(params[:y])
       tx = Integer(params[:tx])
       ty = Integer(params[:ty])
+      put "(x,y) = (#{x},#{y})"
+      put "(tx,ty) = (#{tx},#{ty})"
       move = move(x, y, tx, ty)
       render json: { x: move[0], y: move[1] }, status: 200
 
@@ -22,6 +24,9 @@ class KnightController < ApplicationController
     pos = [x, y]
     target = [tx, ty]
 
+    put "Pos = (#{pos[0]},#{pos[1]})" 
+    put "Target (#{target[0]},#{target[1]})"
+    
     # check pos and target
     if !is_valid_square(pos) || !is_valid_square(target) then
       raise ArgumentError.new "Invalid position or target (#{pos[0]},#{pos[1]}) to (#{target[0]},#{target[1]})"
