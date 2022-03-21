@@ -100,7 +100,7 @@ class KnightController < ApplicationController
 
   # checks to see if a square is valid for the board
   def is_valid_square(pos) 
-      if pos1.length() == 2 then
+      if pos.length() == 2 then
           return pos[0].between(0, 7) && pos[1].between(0, 7)
       else
           return false
