@@ -39,19 +39,13 @@ class KnightController < ApplicationController
     queue = [pos, []]
 
     puts "queue created..."
-
-    visited = Array.new(8)
-
-    puts "visited created..."
+    
     # boolean version of chess board to check visited squares
     # so that we don't revisit the same square and end up in
     # an infinite loop
-    for i in visited do 
-        i = Array.new(8)
-        for j in i do
-            j = false;
-        end
-    end 
+    visited = Array.new(8) {Array.new(8, false)}
+
+    puts "visited created..."
 
     # mark the current knight pos as visited
     visited[pos[0]][pos[1]] = true;
