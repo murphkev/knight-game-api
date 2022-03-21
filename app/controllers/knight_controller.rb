@@ -6,8 +6,6 @@ class KnightController < ApplicationController
       y = Integer(params[:y])
       tx = Integer(params[:tx])
       ty = Integer(params[:ty])
-      puts "(x,y) = (#{x},#{y})"
-      puts "(tx,ty) = (#{tx},#{ty})"
       move = move(x, y, tx, ty)
       render json: { x: move[0], y: move[1] }, status: 200
 
@@ -24,11 +22,8 @@ class KnightController < ApplicationController
     pos = [x, y]
     target = [tx, ty]
 
-    puts "Pos = (#{pos[0]},#{pos[1]})" 
-    puts "Target (#{target[0]},#{target[1]})"
-
     # check pos and target
-    if !is_valid_square(pos) || !is_valid_square(target) then
+    if !is_valid_square(pos) || !is_valid_square(target) || is_same_square(pos, target) then
       raise ArgumentError.new "Invalid position or target (#{pos[0]},#{pos[1]}) to (#{target[0]},#{target[1]})"
     end
 
@@ -40,15 +35,11 @@ class KnightController < ApplicationController
     queue = Array.new(1) {Array.new(2)}
     queue[0][0] = pos
     queue[0][1] = []
-
-    puts "queue created..."
     
     # boolean version of chess board to check visited squares
     # so that we don't revisit the same square and end up in
     # an infinite loop
     visited = Array.new(8) {Array.new(8, false)}
-
-    puts "visited created..."
 
     # mark the current knight pos as visited
     visited[pos[0]][pos[1]] = true;
@@ -58,7 +49,6 @@ class KnightController < ApplicationController
 
     # loop until there is one element in queue
     while queue.length() != 0 do
-        puts "into the queue..."
         # get the first pos
         
         # NB: because positions are added in order of 
@@ -68,7 +58,6 @@ class KnightController < ApplicationController
         # have the lowest, or equal lowest move count.
         
         new_pos = queue.shift();
-        puts "...checking position (#{new_pos[0][0]}, #{new_pos[0][1]})"
 
         # if that's the target...
         if is_same_square(new_pos[0], target) then 
@@ -107,10 +96,8 @@ class KnightController < ApplicationController
   # checks to see if a square is valid for the board
   def is_valid_square(pos) 
       if pos.length() == 2 then
-          puts "Pos (#{pos[0]},#{pos[1]}) is valid" 
           return pos[0].between?(0, 7) && pos[1].between?(0, 7)
       else
-          puts "Pos (#{pos[0]},#{pos[1]}) is invalid" 
           return false
       end
   end
