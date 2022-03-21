@@ -24,7 +24,7 @@ class KnightController < ApplicationController
 
     # check pos and target
     if !is_valid_square(pos) || !is_valid_square(target) then
-      raise ArgumentError.new "Invalid position or target"
+      raise ArgumentError.new "Invalid position or target (" + x + "," + y + ") to (" + tx + "," + ty + ")"
     end
 
     # all possible moves relative to current pos
