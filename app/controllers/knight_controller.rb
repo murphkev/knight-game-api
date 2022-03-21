@@ -19,8 +19,8 @@ class KnightController < ApplicationController
   private
   def move(x, y, tx, ty)
 
-    pos = Array.new(x, y)
-    target = Array.new(tx, ty)
+    pos = [x, y]
+    target = [tx, ty]
 
     # check pos and target
     if !is_valid_square(pos) || !is_valid_square(target) then
@@ -28,10 +28,10 @@ class KnightController < ApplicationController
     end
 
     # all possible moves relative to current pos
-    delta_x = Array.new(-2, -1,  1,  2, -2, -1, 1, 2)
-    delta_y = Array.new(-1, -2, -2, -1,  1,  2, 2, 1)
+    delta_x = [-2, -1,  1,  2, -2, -1, 1, 2]
+    delta_y = [-1, -2, -2, -1,  1,  2, 2, 1]
 
-    queue = Array.new(pos, Array.new)
+    queue = [pos, []]
 
     visited = Array.new(8)
 
