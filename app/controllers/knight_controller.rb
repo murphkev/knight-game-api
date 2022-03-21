@@ -19,8 +19,8 @@ class KnightController < ApplicationController
   private
   def move(x, y, tx, ty)
 
-    pos = new Array[x, y]
-    target = new Array[tx, ty]
+    pos = Array.new(x, y)
+    target = Array.new(tx, ty)
 
     # check pos and target
     if !is_valid_square(pos) || !is_valid_square(target) then
