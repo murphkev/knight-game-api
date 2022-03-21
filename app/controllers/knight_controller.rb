@@ -75,17 +75,17 @@ class KnightController < ApplicationController
         end
 
         # otherwise check every other move possible
-        for i in 0..8 do
+        for i in 0..7 do
             x = new_pos[0][0] + delta_x[i]
             y = new_pos[0][1] + delta_y[i]
-            xy = Array[x, y]
+            xy = [x, y]
 
             # make sure those squares are valid, and not previously visited
             if is_valid_square(xy) && !visited[x][y] then
                 # mark square as visited
                 visited[x][y] = true;
                 history = new_pos[1] + xy
-                queue.push(Array[xy, history])
+                queue.push([xy, history])
             end
         end
     end
