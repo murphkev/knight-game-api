@@ -77,7 +77,7 @@ class KnightController < ApplicationController
             if is_valid_square(xy) && !visited[x][y] then
                 # mark square as visited
                 visited[x][y] = true;
-                history = new_pos[1] + xy
+                history = new_pos[1].push(xy)
                 queue.push([xy, history])
             end
         end
