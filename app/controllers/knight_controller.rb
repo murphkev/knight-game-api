@@ -61,6 +61,9 @@ class KnightController < ApplicationController
 
         # if that's the target...
         if is_same_square(new_pos[0], target) then 
+          for i in new_pos[1] do
+            puts "(#{i[0]}, #{i[1]})"
+          end
             return new_pos[1]
         end
 
