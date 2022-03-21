@@ -58,7 +58,7 @@ class KnightController < ApplicationController
 
     # loop until there is one element in queue
     while queue.length() != 0 do
-
+        puts "into the queue..."
         # get the first pos
         
         # NB: because positions are added in order of 
@@ -68,6 +68,7 @@ class KnightController < ApplicationController
         # have the lowest, or equal lowest move count.
         
         new_pos = queue.shift();
+        puts "...checking position (#{new_pos[0]}, #{new_pos[1]})"
 
         # if that's the target...
         if is_same_square(new_pos[0], target) then 
