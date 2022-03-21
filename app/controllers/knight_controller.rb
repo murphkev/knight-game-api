@@ -7,11 +7,12 @@ class KnightController < ApplicationController
       tx = Integer(params[:tx])
       ty = Integer(params[:ty])
       move = get_move(x, y, tx, ty)
-      render json { x: move[0], y: move[1] }, status: 200
+      render json: { x: move[0], y: move[1] }, status: 200
 
     # handle non-numeric inputs & impossible case of no move found
     rescue ArgumentError, StandardError => e
       render error: { error: e.message }, status: 400
+
     end
 
   end
