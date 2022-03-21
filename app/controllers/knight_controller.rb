@@ -11,7 +11,7 @@ class KnightController < ApplicationController
 
     # handle non-numeric inputs & impossible case of no move found
     rescue ArgumentError, StandardError => e
-      render error: { error: e.message }, status: 400
+      render json: { error: e.message }, status: 400
 
     end
   end
