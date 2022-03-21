@@ -6,7 +6,7 @@ class KnightController < ApplicationController
       y = Integer(params[:y])
       tx = Integer(params[:tx])
       ty = Integer(params[:ty])
-      move = get_move(x, y, tx, ty)
+      move = move(x, y, tx, ty)
       render json: { x: move[0], y: move[1] }, status: 200
 
     # handle non-numeric inputs & impossible case of no move found
@@ -17,7 +17,7 @@ class KnightController < ApplicationController
   end
 
   private
-  def get_move(x, y, tx, ty)
+  def move(x, y, tx, ty)
 
     pos = new Array[x, y]
     target = new Array[tx, ty]
@@ -84,7 +84,7 @@ class KnightController < ApplicationController
             end
         end
     end
-    
+
     # unsolvable, which should be impossible
     raise StandardError.new "Knight move could not be found"
   end
