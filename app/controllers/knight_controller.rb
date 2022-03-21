@@ -37,7 +37,9 @@ class KnightController < ApplicationController
     delta_y = [-1, -2, -2, -1,  1,  2, 2, 1]
 
     # queue array containing array { pos, history }
-    queue = Array.new(1) { Array.new(2) { pos, [] }}
+    queue = Array.new(1) {Array.new(2)}
+    queue[0][0] = pos
+    queue[0][1] = []
 
     puts "queue created..."
     
