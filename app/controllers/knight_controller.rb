@@ -36,7 +36,8 @@ class KnightController < ApplicationController
     delta_x = [-2, -1,  1,  2, -2, -1, 1, 2]
     delta_y = [-1, -2, -2, -1,  1,  2, 2, 1]
 
-    queue = [pos, []]
+    # queue array containing array { pos, history }
+    queue = Array.new(1) { Array.new(2) { pos, Array.new }}
 
     puts "queue created..."
     
@@ -65,7 +66,7 @@ class KnightController < ApplicationController
         # have the lowest, or equal lowest move count.
         
         new_pos = queue.shift();
-        puts "...checking position (#{new_pos[0]}, #{new_pos[1]})"
+        puts "...checking position (#{new_pos[0][0]}, #{new_pos[0][1]})"
 
         # if that's the target...
         if is_same_square(new_pos[0], target) then 
