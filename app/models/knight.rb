@@ -1,12 +1,9 @@
 class Knight
-include ActiveModel::API
 
-attr_accessor :x, :x, :tx, :ty
+def self.get_path_to_target(x, y, tx, ty)
 
-def get_path_to_target()
-
-    pos = [:x, :y]
-    target = [:tx, :ty]
+    pos = [x, y]
+    target = [tx, ty]
 
     # check pos and target
     if !is_valid_square(pos) || !is_valid_square(target) || is_same_square(pos, target) then
@@ -75,7 +72,7 @@ def get_path_to_target()
   end
 
   # checks to see if two positions are the same
-  def is_same_square(pos1, pos2) 
+  def self.is_same_square(pos1, pos2) 
       if pos1.length() == 2 && pos2.length() == 2 then
           return pos1[0].eql?(pos2[0]) && pos1[1].eql?(pos2[1])
       else
@@ -84,7 +81,7 @@ def get_path_to_target()
   end
 
   # checks to see if a square is valid for the board
-  def is_valid_square(pos) 
+  def self.is_valid_square(pos) 
       if pos.length() == 2 then
           return pos[0].between?(0, 7) && pos[1].between?(0, 7)
       else

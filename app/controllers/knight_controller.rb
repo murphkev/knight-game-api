@@ -6,8 +6,7 @@ class KnightController < ApplicationController
       y = Integer(params[:y])
       tx = Integer(params[:tx])
       ty = Integer(params[:ty])
-      @knight = new Knight(x, y, tx, ty)
-      @path = @knight.get_path_to_target
+      @path = Knight.get_path_to_target(x, y, tx, ty)
       render json: { path: @path }, status: 200
 
     # handle non-numeric inputs & impossible case of no move found
