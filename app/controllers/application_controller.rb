@@ -3,4 +3,5 @@ class ApplicationController < ActionController::API
 
     def handle_exception(e)
         render json: { error: e.message }, status: 400
+    end
 end
