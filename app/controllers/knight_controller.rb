@@ -7,6 +7,5 @@ class KnightController < ApplicationController
     ty = Integer(params[:ty])
     @path = Knight.get_path_to_target(x, y, tx, ty)
     render json: { path: @path }, status: 200
-    end
   end
 end
