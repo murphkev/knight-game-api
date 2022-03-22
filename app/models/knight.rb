@@ -71,7 +71,7 @@ class Knight
   end
 
   # checks to see if two positions are the same
-  def is_same_square(pos1, pos2) 
+  def self.is_same_square(pos1, pos2) 
       if pos1.length() == 2 && pos2.length() == 2 then
           return pos1[0].eql?(pos2[0]) && pos1[1].eql?(pos2[1])
       else
@@ -80,7 +80,7 @@ class Knight
   end
 
   # checks to see if a square is valid for the board
-  def is_valid_square(pos) 
+  def self.is_valid_square(pos) 
       if pos.length() == 2 then
           return pos[0].between?(0, 7) && pos[1].between?(0, 7)
       else
