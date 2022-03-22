@@ -1,5 +1,5 @@
 class Knight 
-  def get_path_to_target(x, y, tx, ty)
+  def self.get_path_to_target(x, y, tx, ty)
 
     pos = [x, y]
     target = [tx, ty]
